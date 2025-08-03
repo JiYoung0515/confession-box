@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Hòm thư Confession Tình Yêu 💌</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: linear-gradient(to right, #ffe0ec, #ffe8f0);
+      text-align: center;
+      padding: 50px;
+    }
+
+    h1 {
+      color: #e91e63;
+      font-size: 3em;
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.05); }
+      100% { transform: scale(1); }
+    }
+
+    textarea {
+      width: 90%;
+      max-width: 500px;
+      height: 120px;
+      padding: 15px;
+      border: 2px solid #e91e63;
+      border-radius: 10px;
+      resize: none;
+      font-size: 1.1em;
+      background-color: #fff0f5;
+    }
+
+    button {
+      margin-top: 15px;
+      padding: 10px 25px;
+      font-size: 1.2em;
+      background-color: #e91e63;
+      color: white;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background-color: #c2185b;
+    }
+
+    .output {
+      margin-top: 40px;
+      font-size: 1.3em;
+      color: #4a148c;
+      background-color: #fff3f6;
+      border-radius: 10px;
+      padding: 20px;
+      display: none;
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      from {opacity: 0;}
+      to {opacity: 1;}
+    }
+  </style>
+</head>
+<body>
+  <h1>💖 Hòm thư Confession 💖</h1>
+
+  <p>Hãy gửi lời tỏ tình của bạn tới người ấy...</p>
+  <textarea id="confession" placeholder="Viết lời tỏ tình ngọt ngào tại đây..."></textarea><br>
+  <button onclick="sendConfession()">Gửi 💌</button>
+
+  <div class="output" id="outputBox">
+    <h2>🌹 Lời tỏ tình của bạn 🌹</h2>
+    <p id="confessionText"></p>
+    <p>❤️ Chúc bạn sớm nhận được lời hồi đáp ngọt ngào! ❤️</p>
+  </div>
+
+  <!-- Âm thanh gửi thư -->
+  <audio id="sendSound" preload="auto">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4b8b6ec29c.mp3?filename=message-sent-139053.mp3" type="audio/mpeg">
+    Trình duyệt của bạn không hỗ trợ audio.
+  </audio>
+
+  <script>
+    function sendConfession() {
+      const confession = document.getElementById("confession").value.trim();
+      const outputBox = document.getElementById("outputBox");
+      const confessionText = document.getElementById("confessionText");
+      const sendSound = document.getElementById("sendSound");
+
+      if (confession === "") {
+        alert("Bạn chưa nhập gì cả! 😢");
+        return;
+      }
+
+      confessionText.innerText = confession;
+      outputBox.style.display = "block";
+
+      // Phát âm thanh
+      sendSound.currentTime = 0;
+      sendSound.play();
+    }
+  </script>
+</body>
+</html>
